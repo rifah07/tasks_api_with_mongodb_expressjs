@@ -1,10 +1,10 @@
 const express = require("express");
 
-const addMovie = require("./controllers/addMovie");
+const addTask = require("./controllers/addTask");
 
 const app = express();
 
-app.post("/api/movies", addMovie);
+app.post("/api/tasks", addTask);
 
 app.listen(8000, () => {
   console.log("Server started successfully!");
