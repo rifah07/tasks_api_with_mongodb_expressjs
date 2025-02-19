@@ -1,12 +1,19 @@
 const express = require("express");
-
+require("dotenv").config();
 const addTask = require("./controllers/addTask");
 
 const mongoose = require("mongoose");
 
 //connection to mongodb
 
-mongoose.connect();
+mongoose
+  .connect(process.env.MONGO_URI, {})
+  .then(() => {
+    console.log("MongoDB Connected successfully!");
+  })
+  .catch(() => {
+    console.log("MongoDB could not connected.");
+  });
 
 const app = express();
 
