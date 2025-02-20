@@ -17,6 +17,8 @@ mongoose
 
 const app = express();
 
+require("./models/tasks.model");
+
 //routes
 
 app.post("/api/tasks", addTask);
