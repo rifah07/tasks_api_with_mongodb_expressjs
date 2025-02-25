@@ -1,7 +1,13 @@
 const addTask = (req, res) => {
-  console.log(req.body);
+  const { task_name, status } = req.body;
+
+  //validations
+
+  //successful
+
   res.status(200).json({
-    status: "It is add a Task route",
+    status: "Yeah! Done.",
+    message: "A new task added successfully",
   });
 };
 
