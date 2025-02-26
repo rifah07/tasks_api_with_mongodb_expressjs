@@ -5,26 +5,15 @@ const addTask = (req, res) => {
 
   //validations
 
-  if (!task_name) {
+  try {
+    if (!task_name) throw "Task name is required";
+    if (!status) throw "Task status is required";
+    if (!validStatuses.includes(status.toLowerCase()))
+      throw "Task status must be 'Pending' or 'Completed'";
+  } catch (e) {
     res.status(400).json({
       status: "Failed!",
-      message: "Task name must be provided",
-    });
-    return;
-  }
-
-  if (!status) {
-    res.status(400).json({
-      status: "Failed!",
-      message: "Task status must be provided",
-    });
-    return;
-  }
-
-  if (!validStatuses.includes(status.toLowerCase())) {
-    res.status(400).json({
-      status: "Failed!",
-      message: "Task status must be 'Pending' or 'Completed'",
+      message: e,
     });
     return;
   }
