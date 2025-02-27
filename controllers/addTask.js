@@ -1,6 +1,9 @@
-const mongoose=require("mongoose");
+const mongoose= require("mongoose");
 
-const addTask = (req, res) => {
+const addTask = async (req, res) => {
+
+  const tasksModel= mongoose.model("tasks");
+
   const { task_name, status } = req.body;
 
   const validStatuses = ["pending", "completed"];
@@ -21,6 +24,11 @@ const addTask = (req, res) => {
   }
 
   //successful
+
+  await tasksModel.create({
+    task_name: task_name,
+    status: status,
+  })
 
   res.status(200).json({
     status: "Yeah! Done.",
