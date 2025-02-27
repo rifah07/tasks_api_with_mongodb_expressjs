@@ -1,8 +1,7 @@
-const mongoose= require("mongoose");
+const mongoose = require("mongoose");
 
 const addTask = async (req, res) => {
-
-  const tasksModel= mongoose.model("tasks");
+  const tasksModel = mongoose.model("tasks");
 
   const { task_name, status } = req.body;
 
@@ -25,10 +24,19 @@ const addTask = async (req, res) => {
 
   //successful
 
-  await tasksModel.create({
-    task_name: task_name,
-    status: status,
-  })
+  try {
+    const createTask = await tasksModel.create({
+      task_name: task_name,
+      status: status,
+    });
+    console.log(createTask);
+  } catch (e) {
+    res.status(400).json({
+      status: "Failed!",
+      message: "New task couldn't be added. Something went wrong.",
+    });
+    return;
+  }
 
   res.status(200).json({
     status: "Yeah! Done.",
