@@ -10,14 +10,14 @@ const addTask = async (req, res) => {
   //validations
 
   try {
-    if (!task_name) throw "Task name is required";
+   // if (!task_name) throw "Task name is required";
     if (!status) throw "Task status is required";
     if (!validStatuses.includes(status.toLowerCase()))
       throw "Task status must be 'Pending' or 'Completed'";
   } catch (e) {
     res.status(400).json({
       status: "Failed!",
-      message: e,
+      message: e.message,
     });
     return;
   }
