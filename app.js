@@ -2,6 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const addTask = require("./controllers/addTask");
 const getAllTasks = require("./controllers/getAllTasks");
+const getSingleTask = require("./controllers/getSingleTask");
 
 const mongoose = require("mongoose");
 
@@ -26,6 +27,7 @@ require("./models/tasks.model");
 
 app.post("/api/tasks", addTask);
 app.get("/api/tasks", getAllTasks);
+app.get("/api/tasks/:task_id", getSingleTask);
 
 app.listen(8000, () => {
   console.log("Server started successfully!");
