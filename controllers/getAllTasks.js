@@ -10,7 +10,7 @@ const getAllTasks = async (req, res) => {
       status: "All the data is here!",
       data: tasksData,
     });
-  } catch (e) {
+  } catch (e) { 
     res.status(400).json({
       status: "Failed!",
       message: e.message,
