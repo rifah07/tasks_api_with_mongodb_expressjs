@@ -27,7 +27,7 @@ require("./models/tasks.model");
 
 app.post("/api/tasks", addTask);
 app.get("/api/tasks", getAllTasks);
-app.get("/api/tasks/:task_id", getSingleTask);
+app.get("/api/tasks/:task_id", getSingleTask); 
 
 app.listen(8000, () => {
   console.log("Server started successfully!");
