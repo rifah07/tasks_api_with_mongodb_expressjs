@@ -4,6 +4,18 @@ const editTask = async (req, res) => {
   const tasksModel = mongoose.model("tasks");
   const { task_id, task_name, status } = req.body;
 
+
+  try {
+    if (!task_id) throw "Task ID is required";
+  }
+  catch (e) {
+    res.status(400).json({
+      status: "Failed!",
+      message: "Task Id is required",
+    });
+    return;
+  }
+
   try {
     await tasksModel.updateOne(
       {
@@ -11,6 +23,7 @@ const editTask = async (req, res) => {
       },
       {
         task_name: task_name,
+        status: status,
       },
       {
         runValidators: true,
