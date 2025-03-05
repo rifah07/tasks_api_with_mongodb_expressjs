@@ -31,7 +31,7 @@ app.post("/api/tasks", addTask);
 app.get("/api/tasks", getAllTasks);
 app.get("/api/tasks/:task_id", getSingleTask); 
 app.patch("/api/tasks/", editTask); 
-app.delete("/api/tasks/_task_id", deleteTask); 
+app.delete("/api/tasks/:task_id", deleteTask); 
 
 
 app.listen(8000, () => {

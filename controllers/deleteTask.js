@@ -3,10 +3,11 @@ const mongoose= require("mongoose");
 const deleteTask = async(req,res) =>{
 
     const tasksModel = mongoose.model("tasks");
+    const task_id= req.params.task_id;
 
     try{
-        await tasksModel.findByIdAndDelete({
-            _id: teq.params._id
+        await tasksModel.deleteOne({
+            _id: task_id
         })
 
     }catch(e){
@@ -19,7 +20,8 @@ const deleteTask = async(req,res) =>{
 
 
     res.status(200).json({
-        status: "This is delete task part"
+        status: "Successfulll",
+        message: "Task deleted successfully!",
     })
 
 }
