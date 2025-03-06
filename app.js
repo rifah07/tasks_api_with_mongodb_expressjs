@@ -5,6 +5,8 @@ const getAllTasks = require("./controllers/getAllTasks");
 const getSingleTask = require("./controllers/getSingleTask");
 const editTask = require("./controllers/editTask");
 const deleteTask = require("./controllers/deleteTask");
+const taskFilter = require("./controllers/taskFilter");
+
 
 const mongoose = require("mongoose");
 
@@ -29,10 +31,12 @@ require("./models/tasks.model");
 
 app.post("/api/tasks", addTask);
 app.get("/api/tasks", getAllTasks);
-app.get("/api/tasks/:task_id", getSingleTask); 
-app.patch("/api/tasks/", editTask); 
-app.delete("/api/tasks/:task_id", deleteTask); 
+app.get("/api/tasks/:task_id", getSingleTask);
+app.patch("/api/tasks/", editTask);
+app.delete("/api/tasks/:task_id", deleteTask);
 
+//open AI Suggestion
+app.get("/api/tasks/getImportantTasks", taskFilter);
 
 app.listen(8000, () => {
   console.log("Server started successfully!");
