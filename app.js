@@ -36,7 +36,7 @@ app.patch("/api/tasks/", editTask);
 app.delete("/api/tasks/:task_id", deleteTask);
 
 //open AI Suggestion
-app.get("/api/tasks/getImportantTasks", taskFilter);
+app.get("/api/tasks/openai/getImportantTasks", taskFilter);
 
 app.listen(8000, () => {
   console.log("Server started successfully!");
