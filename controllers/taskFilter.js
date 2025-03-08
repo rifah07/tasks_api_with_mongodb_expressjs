@@ -8,8 +8,8 @@ const taskFilter = async (req, res) => {
 
       async function main() {
         const chatCompletion = await client.chat.completions.create({
-          messages: [{ role: 'user', content: 'Say this is a test' }],
-          model: 'gpt-4o',
+          messages: [{ role: 'user', content: 'Say this is a testfor OpenAI' }],
+          model: 'gpt-3.5-turbo',
         });
       }
       
