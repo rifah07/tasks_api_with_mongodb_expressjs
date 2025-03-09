@@ -1,4 +1,4 @@
-require("express-async-errors");
+require('express-async-errors');
 
 const express = require("express");
 require("dotenv").config();
@@ -8,6 +8,8 @@ const getSingleTask = require("./controllers/getSingleTask");
 const editTask = require("./controllers/editTask");
 const deleteTask = require("./controllers/deleteTask");
 const taskFilter = require("./controllers/taskFilter");
+const errorHandler = require("./handlers/errorHandler");
+
 
 
 const mongoose = require("mongoose");
@@ -39,6 +41,9 @@ app.delete("/api/tasks/:task_id", deleteTask);
 
 //open AI Suggestion
 app.get("/api/tasks/openai/getImportantTasks", taskFilter);
+
+app.use(errorHandler);
+
 
 app.listen(8000, () => {
   console.log("Server started successfully!");
