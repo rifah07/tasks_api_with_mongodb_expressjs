@@ -9,26 +9,18 @@ const addTask = async (req, res) => {
 
   //validations
 
-  // if (!task_name) throw "Task name is required";
+  //if (!task_name) throw "Task name is required";
   if (!status) throw "Task status is required";
   if (!validStatuses.includes(status.toLowerCase()))
     throw "Task status must be 'Pending' or 'Completed'";
 
   //successful
 
-  try {
-    const createTask = await tasksModel.create({
-      task_name: task_name,
-      status: status,
-    });
-    console.log(createTask);
-  } catch (e) {
-    res.status(400).json({
-      status: "Failed!",
-      message: "New task couldn't be added. Something went wrong.",
-    });
-    return;
-  }
+  const createTask = await tasksModel.create({
+    task_name: task_name,
+    status: status,
+  });
+  console.log(createTask);
 
   res.status(200).json({
     status: "Yeah! Done.",

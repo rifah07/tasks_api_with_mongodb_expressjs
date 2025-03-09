@@ -8,27 +8,11 @@ const deleteTask = async (req, res) => {
     _id: task_id,
   });
 
-  try {
-    if (!getTask) throw "Task not found!";
-  } catch (e) {
-    res.status(400).json({
-      status: "Failed deletion!",
-      message: e,
-    });
-    return;
-  }
+  if (!getTask) throw "Task not found!";
 
-  try {
-    await tasksModel.deleteOne({
-      _id: task_id,
-    });
-  } catch (e) {
-    res.status(400).json({
-      status: "Failed!",
-      message: e.message,
-    });
-    return;
-  }
+  await tasksModel.deleteOne({
+    _id: task_id,
+  });
 
   res.status(200).json({
     status: "Successfulll",

@@ -3,20 +3,12 @@ const mongoose = require("mongoose");
 const getAllTasks = async (req, res) => {
   const tasksModel = mongoose.model("tasks");
 
-  try {
-    const tasksData = await tasksModel.find({});
+  const tasksData = await tasksModel.find({});
 
-    res.status(200).json({
-      status: "All the data is here!",
-      data: tasksData,
-    });
-  } catch (e) { 
-    res.status(400).json({
-      status: "Failed!",
-      message: e.message,
-    });
-    return;
-  }
+  res.status(200).json({
+    status: "All the data is here!",
+    data: tasksData,
+  });
 };
 
 module.exports = getAllTasks;
